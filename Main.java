@@ -1,7 +1,9 @@
-package wendel;
+package wendel2;
 
+import javax.swing.JOptionPane;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 // Classe base Aluno
 class Aluno {
@@ -10,7 +12,6 @@ class Aluno {
     private LocalDate nascimento;
     private int aulasAssistidas;
 
-    // Construtor da classe Aluno
     public Aluno(String nome, String curso, LocalDate nascimento, int aulasAssistidas) {
         this.nome = nome;
         this.curso = curso;
@@ -18,27 +19,23 @@ class Aluno {
         this.aulasAssistidas = aulasAssistidas;
     }
 
-    // Método de saudação
-    public void saudacao() {
-        System.out.println("[Aluno] E aí! Eu sou " + nome + ", to fazendo o curso de " + curso + ". Bora estudar juntos!");
+    public String saudacao() {
+        return "[Aluno] E aí! Eu sou " + nome + ", to fazendo o curso de " + curso + ". Bora estudar juntos!";
     }
 
-    // Método que calcula idade com base na data de nascimento
     public int calcularIdade() {
         return Period.between(nascimento, LocalDate.now()).getYears();
     }
 
-    // Método que retorna quantas aulas o aluno já assistiu
     public String relacaoAulas() {
         return "Você assistiu " + aulasAssistidas + " aulas até agora!";
     }
 
-    // Método que simula o aluno recebendo uma aula
     public void receberAula(String aula) {
-        System.out.println("[Aluno] " + nome + " recebeu a aula: " + aula);
+        // Mostra a aula recebida em um diálogo gráfico
+        JOptionPane.showMessageDialog(null, "[Aluno] " + nome + " recebeu a aula: " + aula);
     }
 
-    // Getter para acessar o nome do aluno (usado na classe Professor)
     public String getNome() {
         return nome;
     }
@@ -53,54 +50,71 @@ class Professor extends Aluno {
     private String formacao;
     private String area;
 
-    // Construtor da classe Professor
     public Professor(String nome, String curso, LocalDate nascimento, int aulasAssistidas, String formacao, String area) {
         super(nome, curso, nascimento, aulasAssistidas);
         this.formacao = formacao;
         this.area = area;
     }
 
-    // Sobrescreve o método saudacao() com um estilo mais formal
     @Override
-    public void saudacao() {
-        System.out.println("[Professor] Bom dia. Sou o professor " + getNome() +
+    public String saudacao() {
+        return "[Professor] Bom dia! Sou o professor " + getNome() +
                 ", formado em " + formacao + " e especializado em " + area +
-                ". É um prazer recebê-los na aula de " + getCurso() + ".");
+                ". É um prazer recebê-los na aula de " + getCurso() + ".";
     }
 
-    // Método exclusivo do professor para ministrar aula
     public String ministraAula(String nomeAula) {
         return "Aula ministrada: " + nomeAula + " | Professor: " + getNome() + " | Área: " + area;
     }
 }
 
-// Classe principal onde tudo acontece
+// Classe principal com interface gráfica
 public class Main {
     public static void main(String[] args) {
-        // Cria o objeto Aluno
-        Aluno aluno = new Aluno("João", "Java Básico", LocalDate.of(2000, 5, 10), 12);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        // Cria o objeto Professor
-        Aluno professor = new Professor("Carlos", "Java Avançado", LocalDate.of(1985, 3, 15), 5, "Computação", "Desenvolvimento de Software");
+        // Entrada de dados do Aluno
+        String nomeAluno = JOptionPane.showInputDialog("Digite o nome do aluno:");
+        String cursoAluno = JOptionPane.showInputDialog("Digite o curso do aluno:");
+        String nascimentoAlunoStr = JOptionPane.showInputDialog("Digite a data de nascimento do aluno (dd/MM/yyyy):");
+        int aulasAssistidasAluno = Integer.parseInt(JOptionPane.showInputDialog("Quantas aulas o aluno já assistiu?"));
 
-        System.out.println("=== SAUDAÇÕES ===");
-        aluno.saudacao();       // Saudação do Aluno
-        professor.saudacao();   // Saudação do Professor
+        Aluno aluno = new Aluno(nomeAluno, cursoAluno, LocalDate.parse(nascimentoAlunoStr, formatter), aulasAssistidasAluno);
 
-        System.out.println("\n=== DETALHES DO ALUNO ===");
-        System.out.println(aluno.relacaoAulas());
-        System.out.println("Idade do aluno: " + aluno.calcularIdade() + " anos.");
+        // Entrada de dados do Professor
+        String nomeProfessor = JOptionPane.showInputDialog("Digite o nome do professor:");
+        String cursoProfessor = JOptionPane.showInputDialog("Digite o curso do professor:");
+        String nascimentoProfessorStr = JOptionPane.showInputDialog("Digite a data de nascimento do professor (dd/MM/yyyy):");
+        int aulasAssistidasProfessor = Integer.parseInt(JOptionPane.showInputDialog("Quantas aulas o professor já assistiu?"));
+        String formacaoProfessor = JOptionPane.showInputDialog("Qual a formação do professor?");
+        String areaProfessor = JOptionPane.showInputDialog("Qual a área de especialização do professor?");
 
-        System.out.println("\n=== AULA MINISTRADA ===");
-        // Verifica se professor é realmente um Professor
-        if (professor instanceof Professor prof) {
-            // Professor ministra aula
-            String aula = prof.ministraAula("Herança em Java");
+        Professor professor = new Professor(
+                nomeProfessor,
+                cursoProfessor,
+                LocalDate.parse(nascimentoProfessorStr, formatter),
+                aulasAssistidasProfessor,
+                formacaoProfessor,
+                areaProfessor
+        );
 
-            // Aluno recebe essa aula
-            aluno.receberAula(aula);
-        }
+        // Exibindo saudações
+        JOptionPane.showMessageDialog(null, aluno.saudacao());
+        JOptionPane.showMessageDialog(null, professor.saudacao());
 
-        System.out.println("\n=== FIM DO PROGRAMA ===");
+        // Informações do aluno
+        JOptionPane.showMessageDialog(null,
+                "Aluno: " + nomeAluno + "\n" +
+                aluno.relacaoAulas() + "\n" +
+                "Idade: " + aluno.calcularIdade() + " anos.");
+
+        // Professor ministra aula
+        String nomeAula = JOptionPane.showInputDialog("Digite o nome da aula a ser ministrada:");
+        String aulaMinistrada = professor.ministraAula(nomeAula);
+
+        // Aluno recebe aula
+        aluno.receberAula(aulaMinistrada);
+
+        JOptionPane.showMessageDialog(null, "Fim do programa.");
     }
 }
