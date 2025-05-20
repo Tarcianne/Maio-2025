@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #fceabb, #f8b500);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #444;
+    margin-bottom: 2rem;
+  }
+  
+  .sabores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .sabor-card {
+    background: #fdfdfd;
+    border: 2px solid #f8b500;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+    text-align: center;
+  }
+  
+  .sabor-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .sabor-card h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .sabor-card p {
+    margin: 4px 0;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .sabor-card input {
+    margin-top: 0.5rem;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    width: 100%;
+    text-align: center;
+  }
+  
+  button {
+    margin: 2rem auto 1rem;
+    display: block;
+    padding: 12px 24px;
+    background: #f8b500;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+  }
+  
+  button:hover {
+    background: #e09d00;
+  }
+  
+  #resultado, .pagamento, .mensagem {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border-radius: 6px;
+  }
+  
+  #resultado {
+    background-color: #f1f1f1;
+    color: #444;
+  }
+  
+  .pagamento {
+    background-color: #fafafa;
+  }
+  
+  #formaPagamento {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 1rem;
+    width: 60%;
+    max-width: 300px;
+  }
+  
+  #pagar {
+    background-color: #2ecc71;
+    margin-top: 1rem;
+  }
+  
+  #pagar:hover {
+    background-color: #27ae60;
+  }
+  
+  .mensagem {
+    background: #dff9fb;
+    border-left: 5px solid #27ae60;
+    color: #2d3436;
+    font-weight: bold;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  
+  

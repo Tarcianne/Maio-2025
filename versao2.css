@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #fceabb, #f8b500);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #444;
+    margin-bottom: 2rem;
+  }
+  
+  .sabores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .sabor-card {
+    background: #fdfdfd;
+    border: 2px solid #f8b500;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+    text-align: center;
+  }
+  
+  .sabor-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .sabor-card h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .sabor-card p {
+    margin: 4px 0;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  button {
+    background-color: #f8b500;
+    border: none;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #e69700;
+  }
+  
+  #resultado {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 1rem;
+    background-color: #f1f1f1;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+  
+  #pagamento {
+    margin-top: 1rem;
+  }
+  
+  select {
+    padding: 0.5rem;
+    margin-right: 1rem;
+    border-radius: 6px;
+  }
+  
+  #mensagemFinal {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 6px;
+    text-align: center;
+  }
+  

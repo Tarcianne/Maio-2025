@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Picolés Geladinho</title>
+  <link rel="stylesheet" href="versao1.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🍧 Escolha seus Picolés</h1>
+    <form id="form">
+      <div class="sabores">
+            <div class="sabor-card">
+              <h3>Maracujá</h3>
+              <p>Estoque: 40</p>
+              <p>Preço: R$ 3,00</p>
+              <input type="number" id="maracuja" min="0" placeholder="Qtd. desejada">
+            </div>
+            <div class="sabor-card">
+              <h3>Morango</h3>
+              <p>Estoque: 30</p>
+              <p>Preço: R$ 3,50</p>
+              <input type="number" id="morango" min="0" placeholder="Qtd. desejada">
+            </div>
+            <div class="sabor-card">
+              <h3>Goiaba</h3>
+              <p>Estoque: 25</p>
+              <p>Preço: R$ 2,50</p>
+              <input type="number" id="goiaba" min="0" placeholder="Qtd. desejada">
+            </div>
+            <div class="sabor-card">
+              <h3>Chocolate</h3>
+              <p>Estoque: 50</p>
+              <p>Preço: R$ 4,00</p>
+              <input type="number" id="chocolate" min="0" placeholder="Qtd. desejada">
+            </div>
+            <div class="sabor-card">
+              <h3>Coco</h3>
+              <p>Estoque: 35</p>
+              <p>Preço: R$ 3,00</p>
+              <input type="number" id="coco" min="0" placeholder="Qtd. desejada">
+            </div>
+            <div class="sabor-card">
+              <h3>Limão</h3>
+              <p>Estoque: 20</p>
+              <p>Preço: R$ 2,00</p>
+              <input type="number" id="limao" min="0" placeholder="Qtd. desejada">
+            </div>
+      </div>
+      <button type="button" id="calcular">Calcular Total</button>
+    </form>
+
+    <div id="resultado" class="resultado hidden"></div>
+
+    <div id="pagamento" class="pagamento hidden">
+      <h2>Escolha a forma de pagamento</h2>
+      <select id="formaPagamento">
+        <option value="">Selecione</option>
+        <option value="cartao">Cartão</option>
+        <option value="pix">PIX</option>
+        <option value="dinheiro">Dinheiro</option>
+      </select>
+      <button id="pagar">Pagar</button>
+    </div>
+
+    <div id="mensagemFinal" class="mensagem hidden">✅ Compra Finalizada! Obrigado!</div>
+  </div>
+
+  <script src="versao1.js"></script>
+</body>
+</html>
